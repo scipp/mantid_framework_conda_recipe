@@ -1,0 +1,55 @@
+{% set version = "5.0.20200316.1314" %}
+{% set git_rev = "5f253098f20241f1c1b09df6e04f7b6983876722" %}
+
+package:
+  name: mantid-framework
+  version: {{ version }}
+
+source:
+  git_rev: {{ git_rev }}
+  git_url: https://github.com/mantidproject/mantid.git
+
+requirements:
+  build:
+    - blas
+    - boost
+    - cmake
+    - eigen
+    - gsl
+    - gxx_linux-64 7.3.* [linux64]
+    - h5py
+    - hdf4
+    - hdf5
+    - jsoncpp
+    - librdkafka
+    - muparser
+    - nexus
+    - ninja
+    - numpy {{ numpy }}
+    - openblas
+    - openssl
+    - pkg-config
+    - poco
+    - python {{ python }}
+    - qscintilla2
+    - tbb-devel
+
+  run:
+    - boost
+    - h5py
+    - librdkafka
+    - nexus
+    - numpy
+    - poco
+    - python-dateutil
+    - pyyaml
+    - scipy
+    - six
+    - tbb
+
+build:
+
+about:
+  home:
+  license:
+  license_file:
