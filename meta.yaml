@@ -20,6 +20,7 @@ requirements:
     - h5py
     - hdf4
     - hdf5
+    - jemalloc
     - jsoncpp
     - librdkafka
     - muparser
