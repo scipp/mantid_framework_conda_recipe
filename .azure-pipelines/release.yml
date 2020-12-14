@@ -14,12 +14,6 @@ stages:
       - job: 'linux'
         displayName: 'Linux'
         timeoutInMinutes: 60
-        strategy:
-          matrix:
-            Python36:
-              PYTHON_VERSION: '3.6'
-            Python37:
-              PYTHON_VERSION: '3.7'
         pool:
           vmImage: 'ubuntu-18.04'
         variables:
@@ -34,11 +28,11 @@ stages:
               conda --version
               conda install --yes anaconda-client conda-build
               conda config --set always_yes yes --set changeps1 no
-              conda env create -f env.yml
+              conda env create -f env37.yml
               source activate env
             displayName: 'Conda configuration'
           - bash: |
-              conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --python="$PYTHON_VERSION" .
+              conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge .
             env:
               ANACONDA_TOKEN: $(anaconda_token_secret)
             displayName: 'Package build'

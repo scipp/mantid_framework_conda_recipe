@@ -20,11 +20,11 @@ dependencies:
     - muparser
     - nexus
     - ninja
-    - numpy {{ numpy }}
+    - numpy
     - openblas
     - openssl
     - pkg-config
     - poco
-    - python {{ python }}
+    - python=3.7
     - qscintilla2
     - tbb-devel
