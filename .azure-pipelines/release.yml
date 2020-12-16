@@ -28,8 +28,6 @@ stages:
               conda --version
               conda install --yes anaconda-client conda-build
               conda config --set always_yes yes --set changeps1 no
-              conda env create -f env37.yml
-              source activate env
             displayName: 'Conda configuration'
           - bash: |
               conda build --user scipp --channel conda-forge .
