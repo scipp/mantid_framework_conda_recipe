@@ -25,6 +25,9 @@ stages:
           - bash: echo "##vso[task.prependpath]$CONDA/bin"
             displayName: 'add conda to PATH'
           - bash: |
+              sudo chown -R $USER $CONDA
+            displayName: 'Take ownership of Conda installation'
+          - bash: |
               set -ex
               conda --version
               conda install --yes anaconda-client conda-build
