@@ -11,13 +11,14 @@ stages:
     displayName: 'Build Conda Package'
 
     jobs:
-      - job: 'linux'
-        displayName: 'Linux'
+      - job: 'mac'
+        displayName: 'Mac OS'
         timeoutInMinutes: 120
         pool:
-          vmImage: 'ubuntu-latest'
-        # variables:
-        #   - group: tokens
+          vmImage: 'macOS-10.14'
+        variables:
+          - name: OSX_VERSION
+            value: '10.15'
         steps:
           - checkout: self
             submodules: true
@@ -31,12 +32,4 @@ stages:
             displayName: 'Conda configuration'
           - bash: |
               conda build --user scipp --channel conda-forge .
-            # env:
-            #   ANACONDA_TOKEN: $(anaconda_token_secret)
             displayName: 'Package build'
-          # - task: PublishBuildArtifacts@1
-          #   inputs:
-          #     PathtoPublish: "$(conda_dir)/conda-bld/linux-64"
-          #     ArtifactName: 'linux-64'
-          #   displayName: 'Publish Conda package artefacts'
-              # conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge .

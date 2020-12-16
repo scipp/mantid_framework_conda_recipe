@@ -1,5 +1,5 @@
 {% set version = "5.0.20200914.2323" %}
-{% set git_rev = "0d0443c1cc047513d897e84a1375a0beb069fe60" %}
+{% set git_rev = "df1b7da6cfb65f9149f441dab9fe6e9de4130e20" %}
 
 package:
   name: mantid-framework
@@ -32,7 +32,6 @@ requirements:
     - pkg-config
     - poco
     - python {{ python }}
-    - qscintilla2
     - tbb-devel
 
   run:
@@ -42,13 +41,19 @@ requirements:
     - nexus
     - numpy
     - poco
+    - python
     - python-dateutil
     - pyyaml
     - scipy
     - six
     - tbb
+    - gsl
 
 build:
+  script_env:
+    - CC
+    - CXX
+    - OSX_VERSION
 
 about:
   home:
