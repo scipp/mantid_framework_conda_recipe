@@ -13,7 +13,7 @@ stages:
     jobs:
       - job: 'linux'
         displayName: 'Linux'
-        timeoutInMinutes: 90
+        timeoutInMinutes: 120
         pool:
           vmImage: 'ubuntu-latest'
         # variables:
