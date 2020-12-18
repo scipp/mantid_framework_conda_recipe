@@ -25,7 +25,7 @@ cmake \
   -DUSE_PYTHON_DYNAMIC_LIB=OFF \
   ..
 
-cmake -LA
+cmake -L
 cmake --build .
 cmake --build . --target install
 

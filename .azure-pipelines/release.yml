@@ -22,7 +22,9 @@ stages:
         steps:
           - checkout: self
             submodules: true
-          - bash: echo "##vso[task.prependpath]$CONDA/bin"
+          - bash: |
+             echo "##vso[task.prependpath]$CONDA/bin"
+             echo "##vso[task.setvariable variable=conda_dir]$CONDA"
             displayName: 'add conda to PATH'
           - bash: |
               sudo chown -R $USER $CONDA
@@ -34,5 +36,10 @@ stages:
               conda config --set always_yes yes --set changeps1 no
             displayName: 'Conda configuration'
           - bash: |
-              conda build --user scipp --channel conda-forge .
+              conda build --user scipp --channel conda-forge --python=3.7 .
             displayName: 'Package build'
+          - task: PublishBuildArtifacts@1
+            inputs:
+             PathtoPublish: "$(conda_dir)/conda-bld/osx-64"
+             ArtifactName: 'osx-64'
+            displayName: 'Publish Conda package artefacts'
