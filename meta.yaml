@@ -50,6 +50,13 @@ requirements:
 
 build:
 
+test:
+  imports:
+    - mantid.kernel
+    - mantid.geometry
+    - mantid.api
+    - mantid.simpleapi
+
 about:
   home:
   license:
