@@ -16,12 +16,12 @@ stages:
         timeoutInMinutes: 120
         pool:
           vmImage: 'ubuntu-latest'
-        # variables:
-        #   - group: tokens
         steps:
           - checkout: self
             submodules: true
-          - bash: echo "##vso[task.prependpath]$CONDA/bin"
+          - bash: | 
+            echo "##vso[task.prependpath]$CONDA/bin"
+            echo "##vso[task.setvariable variable=conda_dir]$CONDA"
             displayName: 'add conda to PATH'
           - bash: |
               set -ex
@@ -31,12 +31,9 @@ stages:
             displayName: 'Conda configuration'
           - bash: |
               conda build --user scipp --channel conda-forge .
-            # env:
-            #   ANACONDA_TOKEN: $(anaconda_token_secret)
             displayName: 'Package build'
-          # - task: PublishBuildArtifacts@1
-          #   inputs:
-          #     PathtoPublish: "$(conda_dir)/conda-bld/linux-64"
-          #     ArtifactName: 'linux-64'
-          #   displayName: 'Publish Conda package artefacts'
-              # conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge .
+           - task: PublishBuildArtifacts@1
+             inputs:
+               PathtoPublish: "$(conda_dir)/conda-bld/linux-64"
+               ArtifactName: 'linux-64'
+             displayName: 'Publish Conda package artefacts'
