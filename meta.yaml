@@ -36,11 +36,12 @@ requirements:
     - tbb-devel
 
   run:
+    - python {{ python }}
     - boost
     - h5py
     - librdkafka
     - nexus
-    - numpy
+    - numpy {{ numpy }}
     - poco
     - python-dateutil
     - pyyaml
