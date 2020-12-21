@@ -9,8 +9,37 @@ stages:
 
   - stage: 'build_conda_package'
     displayName: 'Build Conda Package'
-
     jobs:
+      - job: 'linux'
+        displayName: 'Linux'
+        timeoutInMinutes: 120
+        strategy:
+          matrix:
+            Python37:
+              PYTHON_VERSION: '3.7'
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - checkout: self
+            submodules: true
+          - bash: | 
+              echo "##vso[task.prependpath]$CONDA/bin"
+              echo "##vso[task.setvariable variable=conda_dir]$CONDA"
+            displayName: 'add conda to PATH'
+          - bash: |
+              set -ex
+              conda --version
+              conda install --yes anaconda-client conda-build
+              conda config --set always_yes yes --set changeps1 no
+            displayName: 'Conda configuration'
+          - bash: |
+              conda build --user scipp --channel conda-forge --python="$PYTHON_VERSION" .
+            displayName: 'Package build'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: "$(conda_dir)/conda-bld/linux-64"
+              ArtifactName: 'linux-64'
+            displayName: 'Publish Conda package artefacts'
       - job: 'mac'
         displayName: 'Mac OS'
         timeoutInMinutes: 120
