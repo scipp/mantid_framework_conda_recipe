@@ -47,6 +47,10 @@ requirements:
     - scipy
     - six
     - tbb
+    - gsl
+    - jsoncpp
+    - muparser
+    - mkl
 
 build:
 
