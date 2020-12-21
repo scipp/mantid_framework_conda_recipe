@@ -28,10 +28,4 @@ cmake \
 cmake --build .
 cmake --build . --target install
 
-# Move Mantid
-python_site_pkg_path="$(python -c 'from __future__ import print_function; import h5py, os; opd=os.path.dirname; print(opd(opd(h5py.__file__)))')"
-echo "$python_site_pkg_path"
-
-mv "$CONDA_PREFIX/lib/mantid/" "$python_site_pkg_path/"
-mv "$CONDA_PREFIX/lib/"mantid-*-py*.egg-info "$python_site_pkg_path/"
-# ln -s "$CONDA_PREFIX/plugins" "$CONDA_PREFIX/lib/mantid/plugins"
+mv ${CONDA_PREFIX}/lib/mantid ${SP_DIR}
