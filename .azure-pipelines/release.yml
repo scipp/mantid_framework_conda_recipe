@@ -14,6 +14,10 @@ stages:
       - job: 'mac'
         displayName: 'Mac OS'
         timeoutInMinutes: 120
+        strategy:
+          matrix:
+            Python37:
+              PYTHON_VERSION: '3.7'
         pool:
           vmImage: 'macOS-10.14'
         variables:
@@ -36,7 +40,7 @@ stages:
               conda config --set always_yes yes --set changeps1 no
             displayName: 'Conda configuration'
           - bash: |
-              conda build --user scipp --channel conda-forge --python=3.7 .
+              conda build --user scipp --channel conda-forge --python="$PYTHON_VERSION" .
             displayName: 'Package build'
           - task: PublishBuildArtifacts@1
             inputs:
