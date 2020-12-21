@@ -31,7 +31,7 @@ requirements:
     - openssl
     - pkg-config
     - poco
-    - python
+    - python {{ python }}
     - tbb-devel
 
   run:
@@ -41,7 +41,7 @@ requirements:
     - nexus
     - numpy {{ numpy }}
     - poco
-    - python
+    - python {{ python }}
     - python-dateutil
     - pyyaml
     - scipy
