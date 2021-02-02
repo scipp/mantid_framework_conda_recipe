@@ -64,6 +64,7 @@ test:
     - mantid.kernel
     - mantid.geometry
     - mantid.api
+    - mantid.simpleapi
 
 about:
   home:
