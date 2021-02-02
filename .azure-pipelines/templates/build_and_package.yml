@@ -25,7 +25,7 @@ jobs:
         submodules: true
       - bash: |
           echo using rev ${{ parameters.git_rev }}
-        displayName: "Check git_rev"
+        displayName: "show git_rev to build"
       - bash: | 
           echo "##vso[task.prependpath]$CONDA/bin"
         displayName: 'add conda to PATH'
@@ -65,6 +65,9 @@ jobs:
     steps:
       - checkout: self
         submodules: true
+      - bash: |
+          echo using rev ${{ parameters.git_rev }}
+        displayName: "show git_rev to build"
       - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
         displayName: 'add conda to PATH'
