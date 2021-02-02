@@ -29,6 +29,7 @@ jobs:
         displayName: 'Conda configuration'
       - bash: |
           echo publishing ${{ parameters.publish }}
+          if ${{ parameters.publish }} = True
           then
             echo Publishing
             conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
