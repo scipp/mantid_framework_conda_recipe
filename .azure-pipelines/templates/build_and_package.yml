@@ -33,7 +33,7 @@ jobs:
           then
             conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           else
-            conda build --python="$PYTHON_VERSION" .
+            conda build --channel conda-forge --python="$PYTHON_VERSION" .
           fi
         env:
           ANACONDA_TOKEN: $(anaconda_token_secret)
