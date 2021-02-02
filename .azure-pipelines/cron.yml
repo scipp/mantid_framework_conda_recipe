@@ -1,9 +1,13 @@
-trigger:
-  tags:
+schedules:
+- cron: "0 4 * * *"
+  displayName: Daily morning build
+  branches:
     include:
-      - '*.*.*'
+    - template-build # TODO change to master
+  always: true
 
 pr: none
+trigger: none
 
 extends:
   template: templates/build_and_package.yml
