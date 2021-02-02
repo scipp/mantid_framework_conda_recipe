@@ -33,6 +33,7 @@ requirements:
     - poco
     - python {{ python }}
     - tbb-devel
+    - mkl
 
   run:
     - boost
