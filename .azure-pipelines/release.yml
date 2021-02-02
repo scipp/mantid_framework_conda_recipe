@@ -8,4 +8,4 @@ pr: none
 extends:
   template: templates/build_and_package.yml
   parameters:
-    publish: true #  publish package to anaconda cloud
+    publish: false #  publish package to anaconda cloud
