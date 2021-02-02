@@ -34,6 +34,7 @@ requirements:
     - python {{ python }}
     - tbb-devel
     - mkl
+    - liblapack {{ liblapack }}
 
   run:
     - boost

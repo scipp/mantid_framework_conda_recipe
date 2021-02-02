@@ -4,3 +4,5 @@ python:
 numpy:
   - 1.15
 
+liblapack:
+  - 3.8.0
