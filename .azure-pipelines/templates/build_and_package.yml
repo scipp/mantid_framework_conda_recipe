@@ -32,51 +32,10 @@ jobs:
           if ${{ parameters.publish }} = True
           then
             echo Publishing
-            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+            #conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           else
             echo Building without publishing
-            conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          fi
-        env:
-          ANACONDA_TOKEN: $(anaconda_token_secret)
-        displayName: 'Package build'
-  - job: 'mac'
-    displayName: 'Mac OS'
-    timeoutInMinutes: 120
-    strategy:
-      matrix:
-        Python37:
-          PYTHON_VERSION: '3.7'
-    pool:
-      vmImage: 'macOS-10.14'
-    variables:
-      - group: tokens
-      - name: OSX_VERSION
-        value: '10.15'
-    steps:
-      - checkout: self
-        submodules: true
-      - bash: |
-          echo "##vso[task.prependpath]$CONDA/bin"
-        displayName: 'add conda to PATH'
-      - bash: |
-          sudo chown -R $USER $CONDA
-        displayName: 'Take ownership of Conda installation'
-      - bash: |
-          set -ex
-          conda --version
-          conda install --yes anaconda-client conda-build
-          conda config --set always_yes yes --set changeps1 no
-        displayName: 'Conda configuration'
-      - bash: |
-          echo publishing ${{ parameters.publish }}
-          if ${{ parameters.publish }} = True
-          then
-            echo Publishing
-            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
-          else
-            echo Building without publishing
-            conda build --channel conda-forge --python="$PYTHON_VERSION" .
+            #conda build --channel conda-forge --python="$PYTHON_VERSION" .
           fi
         env:
           ANACONDA_TOKEN: $(anaconda_token_secret)
