@@ -27,16 +27,18 @@ jobs:
           conda install --yes anaconda-client conda-build
           conda config --set always_yes yes --set changeps1 no
         displayName: 'Conda configuration'
-      - bash: |
-          echo publishing "${{ parameters.publish }}"
-          if "${{ parameters.publish }}" == "True"
-          then
-            echo Publishing
-            #conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
-          else
-            echo Building without publishing
-            #conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          fi
-        env:
-          ANACONDA_TOKEN: $(anaconda_token_secret)
-        displayName: 'Package build'
+      - ${{ if eq(parameters.publish, true) }}:
+        - bash: |
+            echo publishing "${{ parameters.publish }}"
+              echo Publishing
+              #conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+          env:
+            ANACONDA_TOKEN: $(anaconda_token_secret)
+          displayName: 'Package build'
+      - ${{ if not(eq(parameters.publish, true)) }}:
+        - bash: |
+            else
+              echo Building without publishing
+              #conda build --channel conda-forge --python="$PYTHON_VERSION" .
+            fi
+          displayName: 'Package build'
