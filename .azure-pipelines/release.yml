@@ -10,3 +10,4 @@ extends:
   parameters:
     publish: true #  publish package to anaconda cloud
     git_rev: "6149d0d57fdef374c743cc70c19753f1c775a178"
+    mantid_ver: "5.1.20201218.1546" # calculated from tools/make_version.py/

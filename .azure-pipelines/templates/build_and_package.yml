@@ -5,6 +5,9 @@ parameters:
   - name: git_rev
     type: string
     default: "6149d0d57fdef374c743cc70c19753f1c775a178"
+  - name: mantid_ver
+    type: string
+    default: "5.1.20201218.1546"
 
 jobs:
   - job: 'linux'
@@ -20,6 +23,8 @@ jobs:
       - group: tokens
       - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
+      - name: MANTID_VERSION
+        value: ${{ parameters.mantid_ver }}
     steps:
       - checkout: self
         submodules: true
@@ -62,6 +67,8 @@ jobs:
         value: '10.15'
       - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
+      - name: MANTID_VERSION
+        value: ${{ parameters.mantid_ver }}
     steps:
       - checkout: self
         submodules: true

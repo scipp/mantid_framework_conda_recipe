@@ -1,8 +1,6 @@
-{% set version = "5.1.20201218.1546" %}
-
 package:
   name: mantid-framework
-  version: {{ version }}
+  version: {{ environ.get('MANTID_VERSION', '') }}
 
 source:
   git_rev: {{ environ.get('GIT_REVISION', '') }}

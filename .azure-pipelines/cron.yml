@@ -10,3 +10,4 @@ extends:
   parameters:
     publish: false # Do not publish package to anaconda cloud 
     git_rev: "master" # latest master
+    mantid_ver: "5.1.x" # unknown 
