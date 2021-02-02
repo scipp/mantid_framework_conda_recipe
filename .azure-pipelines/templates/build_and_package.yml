@@ -42,46 +42,46 @@ jobs:
           env:
             GIT_REV: "master"
           displayName: 'Conda build without publish'
-- job: 'mac'
-  displayName: 'Mac OS'
-  timeoutInMinutes: 120
-  strategy:
-    matrix:
-      Python37:
-        PYTHON_VERSION: '3.7'
-  pool:
-    vmImage: 'macOS-10.14'
-  variables:
-    - group: tokens
-    - name: OSX_VERSION
-      value: '10.15'
-  steps:
-    - checkout: self
-      submodules: true
-    - bash: |
-        echo "##vso[task.prependpath]$CONDA/bin"
-      displayName: 'add conda to PATH'
-    - bash: |
-        sudo chown -R $USER $CONDA
-      displayName: 'Take ownership of Conda installation'
-    - bash: |
-        set -ex
-        conda --version
-        conda install --yes anaconda-client conda-build
-        conda config --set always_yes yes --set changeps1 no
-      displayName: 'Conda configuration'
-      - ${{ if eq(parameters.publish, true) }}:
-        - bash: |
-            echo Publishing
-            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
-          env:
-            ANACONDA_TOKEN: $(anaconda_token_secret)
-            GIT_REV: "6149d0d57fdef374c743cc70c19753f1c775a178"
-          displayName: 'Conda build and publish'
-      - ${{ if not(eq(parameters.publish, true)) }}:
-        - bash: |
-            echo Building without publishing
-            conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          env:
-            GIT_REV: "master"
-          displayName: 'Conda build without publish'
+  - job: 'mac'
+    displayName: 'Mac OS'
+    timeoutInMinutes: 120
+    strategy:
+      matrix:
+        Python37:
+          PYTHON_VERSION: '3.7'
+    pool:
+      vmImage: 'macOS-10.14'
+    variables:
+      - group: tokens
+      - name: OSX_VERSION
+        value: '10.15'
+    steps:
+      - checkout: self
+        submodules: true
+      - bash: |
+          echo "##vso[task.prependpath]$CONDA/bin"
+        displayName: 'add conda to PATH'
+      - bash: |
+          sudo chown -R $USER $CONDA
+        displayName: 'Take ownership of Conda installation'
+      - bash: |
+          set -ex
+          conda --version
+          conda install --yes anaconda-client conda-build
+          conda config --set always_yes yes --set changeps1 no
+        displayName: 'Conda configuration'
+        - ${{ if eq(parameters.publish, true) }}:
+          - bash: |
+              echo Publishing
+              conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+            env:
+              ANACONDA_TOKEN: $(anaconda_token_secret)
+              GIT_REV: "6149d0d57fdef374c743cc70c19753f1c775a178"
+            displayName: 'Conda build and publish'
+        - ${{ if not(eq(parameters.publish, true)) }}:
+          - bash: |
+              echo Building without publishing
+              conda build --channel conda-forge --python="$PYTHON_VERSION" .
+            env:
+              GIT_REV: "master"
+            displayName: 'Conda build without publish'
