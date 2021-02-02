@@ -1,3 +1,8 @@
+parameters:
+  - name: publish
+    type: boolean
+    default: false
+
 jobs:
   - job: 'linux'
     displayName: 'Linux'
@@ -23,7 +28,13 @@ jobs:
           conda config --set always_yes yes --set changeps1 no
         displayName: 'Conda configuration'
       - bash: |
-          conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+          echo publishing ${{ parameters.publish }}
+          if ${{ parameters.publish }} = true
+          then
+            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+          else
+            conda build --python="$PYTHON_VERSION" .
+          fi
         env:
           ANACONDA_TOKEN: $(anaconda_token_secret)
         displayName: 'Package build'

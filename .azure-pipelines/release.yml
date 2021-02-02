@@ -5,6 +5,11 @@ trigger:
 
 pr: none
 
+extends:
+  template: templates/build_and_package.yml
+  parameters:
+    publish: false # Do not publish package 
+
 stages:
 
   - stage: 'build_conda_package'
