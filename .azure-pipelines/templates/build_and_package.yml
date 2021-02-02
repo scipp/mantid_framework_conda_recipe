@@ -30,15 +30,13 @@ jobs:
       - ${{ if eq(parameters.publish, true) }}:
         - bash: |
             echo publishing "${{ parameters.publish }}"
-              echo Publishing
-              #conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+            echo Publishing
+            #conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
           displayName: 'Package build'
       - ${{ if not(eq(parameters.publish, true)) }}:
         - bash: |
-            else
-              echo Building without publishing
-              #conda build --channel conda-forge --python="$PYTHON_VERSION" .
-            fi
+            echo Building without publishing
+            #conda build --channel conda-forge --python="$PYTHON_VERSION" .
           displayName: 'Package build'
