@@ -2,6 +2,9 @@ parameters:
   - name: publish
     type: boolean
     default: false
+  - name: git_rev
+    type: string
+    default: "6149d0d57fdef374c743cc70c19753f1c775a178"
 
 jobs:
   - job: 'linux'
@@ -15,6 +18,8 @@ jobs:
       vmImage: 'ubuntu-latest'
     variables:
       - group: tokens
+      - name: GIT_REV
+        value: ${{ parameters.git_rev }}
     steps:
       - checkout: self
         submodules: true
@@ -33,14 +38,11 @@ jobs:
             conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
-            GIT_REV: "6149d0d57fdef374c743cc70c19753f1c775a178"
           displayName: 'Conda build and publish'
       - ${{ if not(eq(parameters.publish, true)) }}:
         - bash: |
             echo Building without publishing
             conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          env:
-            GIT_REV: "master"
           displayName: 'Conda build without publish'
   - job: 'mac'
     displayName: 'Mac OS'
@@ -55,6 +57,8 @@ jobs:
       - group: tokens
       - name: OSX_VERSION
         value: '10.15'
+      - name: GIT_REV
+        value: ${{ parameters.git_rev }}
     steps:
       - checkout: self
         submodules: true
@@ -76,12 +80,9 @@ jobs:
             conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
-            GIT_REV: "6149d0d57fdef374c743cc70c19753f1c775a178"
           displayName: 'Conda build and publish'
       - ${{ if not(eq(parameters.publish, true)) }}:
         - bash: |
             echo Building without publishing
             conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          env:
-            GIT_REV: "master"
           displayName: 'Conda build without publish'

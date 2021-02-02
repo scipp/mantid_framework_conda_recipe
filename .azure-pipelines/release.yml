@@ -9,3 +9,4 @@ extends:
   template: templates/build_and_package.yml
   parameters:
     publish: true #  publish package to anaconda cloud
+    git_rev: "6149d0d57fdef374c743cc70c19753f1c775a178"
