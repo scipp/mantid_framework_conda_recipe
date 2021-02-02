@@ -2,7 +2,7 @@
 
 package:
   name: mantid-framework
-  version: {{ environ.get('GIT_REV', '') }}
+  version: {{ environ.get('GIT_REVISION', '') }}
 
 source:
   git_rev: {{ git_rev }}

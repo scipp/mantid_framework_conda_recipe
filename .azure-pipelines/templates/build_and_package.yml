@@ -18,11 +18,14 @@ jobs:
       vmImage: 'ubuntu-latest'
     variables:
       - group: tokens
-      - name: GIT_REV
+      - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
     steps:
       - checkout: self
         submodules: true
+      - bash: |
+          echo using rev ${{ parameters.git_rev }}
+        displayName: "Check git_rev"
       - bash: | 
           echo "##vso[task.prependpath]$CONDA/bin"
         displayName: 'add conda to PATH'
@@ -57,7 +60,7 @@ jobs:
       - group: tokens
       - name: OSX_VERSION
         value: '10.15'
-      - name: GIT_REV
+      - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
     steps:
       - checkout: self
