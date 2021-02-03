@@ -51,6 +51,7 @@ requirements:
     - gsl
     - jsoncpp
     - muparser
+    - mkl
 
 build:
   script_env:
