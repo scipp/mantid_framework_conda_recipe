@@ -3,7 +3,7 @@ schedules:
   displayName: Daily morning build
   branches:
     include:
-    - template-build # TODO change to master
+    - master 
   always: true
 
 pr: none
@@ -13,5 +13,5 @@ extends:
   template: templates/build_and_package.yml
   parameters:
     publish: false # Do not publish package to anaconda cloud 
-    git_rev: "master" # latest master
+    git_rev: "master" # Mantid latest master
     mantid_ver: "5.1.x" # unknown 
