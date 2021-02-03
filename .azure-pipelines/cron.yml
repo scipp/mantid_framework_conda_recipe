@@ -1,0 +1,17 @@
+schedules:
+- cron: "0 4 * * *"
+  displayName: Daily morning build
+  branches:
+    include:
+    - master 
+  always: true
+
+pr: none
+trigger: none
+
+extends:
+  template: templates/build_and_package.yml
+  parameters:
+    publish: false # Do not publish package to anaconda cloud 
+    git_rev: "master" # Mantid latest master
+    mantid_ver: "5.1.x" # unknown 
