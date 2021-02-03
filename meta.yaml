@@ -8,6 +8,7 @@ source:
 
 requirements:
   build:
+    - _openmp_mutex {{ _openmp_mutex }} [linux64]
     - blas
     - boost
     - cmake
@@ -34,6 +35,7 @@ requirements:
     - liblapack {{ liblapack }}
 
   run:
+    - _openmp_mutex {{ _openmp_mutex }} [linux64]
     - boost
     - h5py
     - librdkafka
@@ -49,7 +51,6 @@ requirements:
     - gsl
     - jsoncpp
     - muparser
-    - mkl
 
 build:
   script_env:
