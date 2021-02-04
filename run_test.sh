@@ -15,5 +15,7 @@ python -c"import scipp;print('Compat testing using scipp', scipp.__version__)"
 git clone https://github.com/scipp/scipp.git
 cd scipp
 git fetch --all --tags
-git checkout tags/0.5.0 # This must be updated for future scipp releases 
+latest_tag=$(git tag --sort=-creatordate | head -1)
+echo using scipp tests from tag $latest_tag
+git checkout $latest_tag
 python -m pytest python/tests/compat/test_mantid.py 
