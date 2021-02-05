@@ -10,21 +10,28 @@ parameters:
     default: "5.1.20201218.1546"
 
 jobs:
-  - job: 'linux'
-    displayName: 'Linux'
+  - job: 'builder'
     timeoutInMinutes: 120
     strategy:
-      matrix:
-        Python37:
-          PYTHON_VERSION: '3.7'
+        Linux:
+          vm_image: 'ubuntu-latest'
+          name: 'Linux'
+        MacOS:
+          vm_image: 'macOS-10.14'
+          name: 'Mac OS'
+    displayName: $(name)
     pool:
-      vmImage: 'ubuntu-latest'
+      vmImage: $(vm_image) 
     variables:
       - group: tokens
       - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
       - name: MANTID_VERSION
         value: ${{ parameters.mantid_ver }}
+      - name: PYTHON_VERSION  
+        value: '3.7'
+      - name: OSX_VERSION
+        value: '10.15'
     steps:
       - checkout: self
         submodules: true
@@ -32,50 +39,6 @@ jobs:
           echo using rev ${{ parameters.git_rev }}
         displayName: "show git_rev to build"
       - bash: | 
-          echo "##vso[task.prependpath]$CONDA/bin"
-        displayName: 'add conda to PATH'
-      - bash: |
-          set -ex
-          conda --version
-          conda install --yes anaconda-client conda-build
-          conda config --set always_yes yes --set changeps1 no
-        displayName: 'Conda configuration'
-      - ${{ if eq(parameters.publish, true) }}:
-        - bash: |
-            echo Publishing
-            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
-          env:
-            ANACONDA_TOKEN: $(anaconda_token_secret)
-          displayName: 'Conda build and publish'
-      - ${{ if not(eq(parameters.publish, true)) }}:
-        - bash: |
-            echo Building without publishing
-            conda build --channel conda-forge --python="$PYTHON_VERSION" .
-          displayName: 'Conda build without publish'
-  - job: 'mac'
-    displayName: 'Mac OS'
-    timeoutInMinutes: 120
-    strategy:
-      matrix:
-        Python37:
-          PYTHON_VERSION: '3.7'
-    pool:
-      vmImage: 'macOS-10.14'
-    variables:
-      - group: tokens
-      - name: OSX_VERSION
-        value: '10.15'
-      - name: GIT_REVISION
-        value: ${{ parameters.git_rev }}
-      - name: MANTID_VERSION
-        value: ${{ parameters.mantid_ver }}
-    steps:
-      - checkout: self
-        submodules: true
-      - bash: |
-          echo using rev ${{ parameters.git_rev }}
-        displayName: "show git_rev to build"
-      - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
         displayName: 'add conda to PATH'
       - bash: |
