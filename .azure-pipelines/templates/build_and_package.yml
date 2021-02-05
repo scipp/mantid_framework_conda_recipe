@@ -16,11 +16,8 @@ jobs:
       matrix:
         Linux:
           vm_image: 'ubuntu-latest'
-          name: 'Linux'
         MacOS:
           vm_image: 'macOS-10.14'
-          name: 'Mac OS'
-    displayName: $(name)
     pool:
       vmImage: $(vm_image) 
     variables:
