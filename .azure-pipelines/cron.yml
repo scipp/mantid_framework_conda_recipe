@@ -6,7 +6,11 @@ schedules:
     - master 
   always: true
 
-pr: none
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - '*'
 trigger: none
 
 extends:
