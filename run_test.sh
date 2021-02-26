@@ -1,7 +1,6 @@
 #!/bin/bash
 
-set -e
-set +x
+set -ex
 
 python -c"import mantid.kernel"
 python -c"import mantid.geometry"

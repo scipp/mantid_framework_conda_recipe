@@ -51,6 +51,7 @@ jobs:
       - ${{ if eq(parameters.publish, true) }}:
         - bash: |
             echo Publishing
+            set -ex
             conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
