@@ -13,5 +13,5 @@ extends:
   template: templates/build_and_package.yml
   parameters:
     publish: false # Do not publish package to anaconda cloud 
-    git_rev: "b37bccb2f6d30155073fae9b89b1b7bc85fa7561" # TODO switch to master when https://github.com/mantidproject/mantid/pull/30859 merged
+    git_rev: "d9297ff29859d3c614abdb3052f97ce6fe0469aa" # TODO switch to master when https://github.com/mantidproject/mantid/pull/30859 merged
     mantid_ver: "5.1.x" # unknown 
