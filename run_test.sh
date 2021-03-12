@@ -7,7 +7,7 @@ python -c"import mantid.kernel"
 python -c"import mantid.geometry"
 python -c"import mantid.api"
 
-conda install -c scipp -c conda-forge scipp psutil pytest git --yes
+conda install -c conda-forge -c scipp scipp psutil pytest git --yes
 
 python -c"import mantid;print('Compat testing using mantid', mantid.__version__)"
 python -c"import scipp;print('Compat testing using scipp', scipp.__version__)"
