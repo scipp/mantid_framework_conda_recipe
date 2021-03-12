@@ -14,5 +14,5 @@ python -c"import scipp;print('Compat testing using scipp', scipp.__version__)"
 git clone https://github.com/scipp/scippneutron.git scippneutron
 cd scippneutron
 git fetch --all --tags
-git checkout more-mantid-scipp-comparisons
+git checkout main 
 python -m pytest python/tests/ 
