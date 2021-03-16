@@ -36,7 +36,6 @@ requirements:
 
   run:
     - _openmp_mutex {{ _openmp_mutex }} [linux64]
-    - boost
     - h5py
     - librdkafka
     - nexus
