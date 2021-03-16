@@ -1,11 +1,3 @@
-schedules:
-- cron: "0 4 * * *"
-  displayName: Daily morning build
-  branches:
-    include:
-    - master 
-  always: true
-
 pr:
   autoCancel: true
   branches:
