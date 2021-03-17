@@ -24,7 +24,7 @@ requirements:
     - muparser
     - nexus
     - ninja
-    - numpy {{ numpy }}
+    - numpy
     - openblas
     - openssl
     - pkg-config
@@ -40,7 +40,7 @@ requirements:
     - h5py
     - librdkafka
     - nexus
-    - numpy {{ numpy }}
+    - numpy
     - poco
     - python {{ python }}
     - python-dateutil
