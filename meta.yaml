@@ -33,6 +33,7 @@ requirements:
     - tbb-devel
     - mkl
     - liblapack {{ liblapack }}
+    - pre-commit
 
   run:
     - _openmp_mutex {{ _openmp_mutex }} [linux64]
