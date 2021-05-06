@@ -53,6 +53,7 @@ requirements:
     - jsoncpp
     - muparser
     - mkl
+    - blis
 
 build:
   script_env:
