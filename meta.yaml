@@ -3,7 +3,7 @@ package:
   version: {{ environ.get('MANTID_VERSION', '') }}
 
 source:
-  git_rev: "master" 
+  git_rev: {{ environ.get('GIT_REVISION', '') }} 
   git_url: https://github.com/mantidproject/mantid.git
 
 requirements:
@@ -62,6 +62,10 @@ build:
     - OSX_VERSION
 
 test:
+  import:
+    - mantid.kernel
+    - mantid.geometry
+    - mantid.api
 
 about:
   home:
