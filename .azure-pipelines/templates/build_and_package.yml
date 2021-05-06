@@ -11,7 +11,7 @@ parameters:
 
 jobs:
   - job: 'builder'
-    timeoutInMinutes: 120
+    timeoutInMinutes: 180
     strategy:
       matrix:
         Linux:
@@ -19,14 +19,14 @@ jobs:
         MacOS:
           vm_image: 'macOS-10.14'
     pool:
-      vmImage: $(vm_image) 
+      vmImage: $(vm_image)
     variables:
       - group: tokens
       - name: GIT_REVISION
         value: ${{ parameters.git_rev }}
       - name: MANTID_VERSION
         value: ${{ parameters.mantid_ver }}
-      - name: PYTHON_VERSION  
+      - name: PYTHON_VERSION
         value: '3.7'
       - name: OSX_VERSION
         value: '10.15'
@@ -36,7 +36,7 @@ jobs:
       - bash: |
           echo using rev ${{ parameters.git_rev }}
         displayName: "show git_rev to build"
-      - bash: | 
+      - bash: |
           echo "##vso[task.prependpath]$CONDA/bin"
         displayName: 'add conda to PATH'
       - bash: |
