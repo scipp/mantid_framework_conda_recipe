@@ -1,0 +1,16 @@
+trigger:
+  branches:
+    exclude:
+      - '*'
+
+pr:
+  autoCancel: true
+  branches:
+    include:
+      - '*'
+
+extends:
+  template: templates/build_and_package.yml
+  parameters:
+    git_rev: "46a08124a610869112b890123bb3a4c5e14486e7"
+    mantid_ver: "6.0.20210412.0948" # calculated from tools/make_version.py/
