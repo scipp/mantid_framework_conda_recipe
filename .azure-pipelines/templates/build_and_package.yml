@@ -14,10 +14,18 @@ jobs:
     timeoutInMinutes: 180
     strategy:
       matrix:
-        Linux:
-          vm_image: 'ubuntu-latest'
-        MacOS:
+        Linux37:
+          vm_image: 'ubuntu-20.04'
+          py_version: '3.7'
+        Linux38:
+          vm_image: 'ubuntu-20.04'
+          py_version: '3.8'
+        MacOS37:
           vm_image: 'macOS-10.14'
+          py_version: '3.7'
+        MacOS38:
+          vm_image: 'macOS-10.14'
+          py_version: '3.8'
     pool:
       vmImage: $(vm_image)
     variables:
@@ -27,7 +35,7 @@ jobs:
       - name: MANTID_VERSION
         value: ${{ parameters.mantid_ver }}
       - name: PYTHON_VERSION
-        value: '3.7'
+        value: $(py_version)
       - name: OSX_VERSION
         value: '10.15'
     steps:
