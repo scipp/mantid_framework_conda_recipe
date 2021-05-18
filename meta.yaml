@@ -8,6 +8,18 @@ source:
 
 requirements:
   build:
+      run_exports:
+        strong:
+          - boost {{ boost }}
+          - nexus
+          - numpy
+          - poco
+          - python {{ python }}
+          - librdkafka
+          - h5py
+          - mkl
+          - jsoncpp
+          - gsl
     - _openmp_mutex {{ _openmp_mutex }} [linux64]
     - blas
     - cmake
@@ -28,18 +40,7 @@ requirements:
     - liblapack {{ liblapack }}
     - pre-commit
     
-    run_exports:
-      strong:
-       - boost {{ boost }}
-       - nexus
-       - numpy
-       - poco
-       - python {{ python }}
-       - librdkafka
-       - h5py
-       - mkl
-       - jsoncpp
-       - gsl
+
 
   run:
     - _openmp_mutex {{ _openmp_mutex }} [linux64]
