@@ -20,28 +20,26 @@ requirements:
           - mkl
           - jsoncpp
           - gsl
-    - _openmp_mutex {{ _openmp_mutex }} [linux64]
-    - blas
-    - cmake
-    - eigen
-    - gxx_linux-64 8.* [linux64]
-    - hdf4
-    - hdf5
-    - jemalloc
-    - muparser
-    - nexus
-    - ninja
-    - numpy
-    - openblas
-    - openssl
-    - pkg-config
-    - tbb-devel
-    - mkl
-    - liblapack {{ liblapack }}
-    - pre-commit
-    
-
-
+        weak:
+          - _openmp_mutex {{ _openmp_mutex }} [linux64]
+          - blas
+          - cmake
+          - eigen
+          - gxx_linux-64 8.* [linux64]
+          - hdf4
+          - hdf5
+          - jemalloc
+          - muparser
+          - nexus
+          - ninja
+          - numpy
+          - openblas
+          - openssl
+          - pkg-config
+          - tbb-devel
+          - mkl
+          - liblapack {{ liblapack }}
+          - pre-commit
   run:
     - _openmp_mutex {{ _openmp_mutex }} [linux64]
     - python-dateutil
