@@ -20,12 +20,18 @@ jobs:
         Linux38:
           vm_image: 'ubuntu-20.04'
           py_version: '3.8'
+        Linux39:
+          vm_image: 'ubuntu-20.04'
+          py_version: '3.9'
         MacOS37:
           vm_image: 'macOS-10.14'
           py_version: '3.7'
         MacOS38:
           vm_image: 'macOS-10.14'
           py_version: '3.8'
+        MacOS39:
+          vm_image: 'macOS-10.14'
+          py_version: '3.9'
     pool:
       vmImage: $(vm_image)
     variables:
