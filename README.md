@@ -1,5 +1,5 @@
 Published Tag Build
-[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Tag-Publish?branchName=setup_release_build_pipeline_osx)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=29&branchName=setup_release_build_pipeline_osx)
+[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Tag-Publish?branchName=refs%2Ftags%2F1.0.4)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=29&branchName=refs%2Ftags%2F1.0.4)
 
 Latest Master Nightly
 [![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Latest-Tag-Daily?branchName=main)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=47&branchName=main)
