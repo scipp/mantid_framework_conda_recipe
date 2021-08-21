@@ -1,8 +1,8 @@
 Published Tag Build
-[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Tag-Publish?branchName=setup_release_build_pipeline_osx)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=29&branchName=setup_release_build_pipeline_osx)
+[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Tag-Publish?branchName=refs%2Ftags%2F1.0.4)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=29&branchName=refs%2Ftags%2F1.0.4)
 
 Latest Master Nightly
-[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Latest-Main-Daily?branchName=refs%2Fpull%2F6%2Fmerge)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=34&branchName=refs%2Fpull%2F6%2Fmerge)
+[![Build Status](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_apis/build/status/Latest-Tag-Daily?branchName=main)](https://dev.azure.com/scipp/mantid-framework-conda-recipe/_build/latest?definitionId=47&branchName=main)
 
 # Conda Recipe and Pipeline(s) for Mantid-Framework
 
