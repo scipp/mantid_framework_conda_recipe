@@ -6,6 +6,6 @@ python:
 
 # _openmp_mutex:
 #   - 4.5 1_gnu
-  
-# boost:
-#   - 1.75.* # see https://github.com/scipp/scipp/issues/1888
+
+boost:
+  - 1.75.* # see https://github.com/scipp/scipp/issues/1888

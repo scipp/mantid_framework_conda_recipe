@@ -10,11 +10,11 @@ requirements:
   build:
     - _openmp_mutex [linux64]
     - blas
-    - boost
+    - boost {{ boost }}
     - cmake
     - eigen
     - gsl
-    - gxx_linux-64 [linux64]
+    - gxx_linux-64 11.1.* [linux64]
     - h5py
     - hdf4
     - hdf5
@@ -37,7 +37,7 @@ requirements:
 
   run:
     - _openmp_mutex [linux64]
-    - boost
+    - boost {{ boost }}
     - h5py
     - librdkafka
     - nexus
