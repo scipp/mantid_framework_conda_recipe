@@ -73,5 +73,5 @@ jobs:
       - ${{ if not(eq(parameters.publish, true)) }}:
         - bash: |
             echo Building without publishing
-            conda mambabuild --channel conda-forge --python="$PYTHON_VERSION" .
+            conda mambabuild --channel conda-forge --channel nodefaults --python="$PYTHON_VERSION" .
           displayName: 'Conda build without publish'
