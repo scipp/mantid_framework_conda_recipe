@@ -59,7 +59,7 @@ jobs:
       - bash: |
           set -ex
           conda --version
-          conda install --yes anaconda-client conda-build mamba boa
+          conda install -c conda-forge --yes anaconda-client conda-build mamba boa
           conda config --set always_yes yes --set changeps1 no
         displayName: 'Conda configuration'
       - ${{ if eq(parameters.publish, true) }}:
