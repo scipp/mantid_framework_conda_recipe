@@ -9,7 +9,7 @@ source:
 requirements:
   build:
     - _openmp_mutex [linux64]
-    - blas
+    # - blas
     - boost {{ boost }}
     - cmake
     - eigen
@@ -24,8 +24,8 @@ requirements:
     - muparser
     - nexus
     - ninja
-    - numpy
-    - openblas
+    - numpy {{ numpy }}
+    # - openblas
     - openssl
     - pkg-config
     - poco
@@ -41,7 +41,7 @@ requirements:
     - h5py
     - librdkafka
     - nexus
-    - numpy
+    - numpy {{ numpy }}
     - poco
     - python {{ python }}
     - python-dateutil
