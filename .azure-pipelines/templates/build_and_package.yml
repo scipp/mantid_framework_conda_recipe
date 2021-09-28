@@ -59,19 +59,19 @@ jobs:
       - bash: |
           set -ex
           conda --version
-          conda install --yes anaconda-client conda-build
+          conda install --yes anaconda-client conda-build mamba boa
           conda config --set always_yes yes --set changeps1 no
         displayName: 'Conda configuration'
       - ${{ if eq(parameters.publish, true) }}:
         - bash: |
             echo Publishing
             set -ex
-            conda build --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+            conda mambabuild --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
           displayName: 'Conda build and publish'
       - ${{ if not(eq(parameters.publish, true)) }}:
         - bash: |
             echo Building without publishing
-            conda build --channel conda-forge --python="$PYTHON_VERSION" .
+            conda mambabuild --channel conda-forge --python="$PYTHON_VERSION" .
           displayName: 'Conda build without publish'

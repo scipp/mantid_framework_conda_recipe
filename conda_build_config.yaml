@@ -7,5 +7,8 @@ python:
 # _openmp_mutex:
 #   - 4.5 1_gnu
 
+# openblas:
+#   - 0.3.5.*
+
 boost:
   - 1.75.* # see https://github.com/scipp/scipp/issues/1888
