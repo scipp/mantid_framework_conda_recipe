@@ -14,5 +14,5 @@ extends:
   template: templates/build_and_package.yml
   parameters:
     publish: false # Do not publish package to anaconda cloud
-    git_rev: "master"
+    git_rev: "main"
     mantid_ver: "6.0.x" # unknown
