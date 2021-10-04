@@ -15,4 +15,4 @@ extends:
   parameters:
     publish: false # Do not publish package to anaconda cloud
     git_rev: "master"
-    mantid_ver: "6.0.x" # unknown
+    mantid_ver: "6.2.x" # unknown
