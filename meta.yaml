@@ -9,7 +9,6 @@ source:
 requirements:
   build:
     - _openmp_mutex [linux64]
-    # - blas
     - boost {{ boost }}
     - cmake
     - eigen
@@ -25,14 +24,11 @@ requirements:
     - nexus
     - ninja
     - numpy {{ numpy }}
-    # - openblas
     - openssl
     - pkg-config
     - poco
     - python {{ python }}
     - tbb-devel
-    # - mkl
-    # - liblapack
     - pre-commit
 
   run:
