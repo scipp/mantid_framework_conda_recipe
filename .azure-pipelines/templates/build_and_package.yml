@@ -20,7 +20,7 @@ jobs:
         Linux38:
           vm_image: 'ubuntu-20.04'
           py_version: '3.8'
-        inux39:
+        Linux39:
          vm_image: 'ubuntu-20.04'
          py_version: '3.9'
         MacOS37:
