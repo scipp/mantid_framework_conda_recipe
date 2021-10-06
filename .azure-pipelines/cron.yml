@@ -1,6 +1,7 @@
 schedules:
-- cron: "0 4 * * *"
-  displayName: Daily morning build
+# Run at 4am on sundays
+- cron: "0 4 * * 0"
+  displayName: Weekly morning build
   branches:
     include:
     - main
