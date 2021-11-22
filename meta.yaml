@@ -24,7 +24,7 @@ requirements:
     - nexus
     - ninja
     - numpy {{ numpy }}
-    - openssl
+    - openssl=1.0.*
     - pkg-config
     - poco
     - python {{ python }}
