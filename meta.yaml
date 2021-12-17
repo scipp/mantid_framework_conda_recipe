@@ -13,7 +13,7 @@ requirements:
     - cmake>=3.21.*
     - eigen
     - gsl
-    - gxx_linux-64 11.* [linux64]
+    - gxx_linux-64 9.* [linux64]
     - h5py
     - hdf4
     - hdf5
