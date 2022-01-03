@@ -9,11 +9,11 @@ source:
 requirements:
   build:
     - _openmp_mutex [linux64]
-    - boost {{ boost }}
-    - cmake
+    - boost
+    - cmake>=3.21.*
     - eigen
     - gsl
-    - gxx_linux-64 8.* [linux64]
+    - gxx_linux-64 11.* [linux64]
     - h5py
     - hdf4
     - hdf5
@@ -33,7 +33,7 @@ requirements:
 
   run:
     - _openmp_mutex [linux64]
-    - boost {{ boost }}
+    - boost
     - h5py
     - librdkafka
     - nexus
