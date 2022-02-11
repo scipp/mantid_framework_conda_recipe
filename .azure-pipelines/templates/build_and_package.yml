@@ -4,10 +4,10 @@ parameters:
     default: false
   - name: git_rev
     type: string
-    default: "6149d0d57fdef374c743cc70c19753f1c775a178"
+    default: ""
   - name: mantid_ver
     type: string
-    default: "5.1.20201218.1546"
+    default: ""
 
 jobs:
   - job: 'builder'
@@ -24,13 +24,13 @@ jobs:
          vm_image: 'ubuntu-20.04'
          py_version: '3.9'
         MacOS37:
-          vm_image: 'macOS-10.14'
+          vm_image: 'macOS-10.15'
           py_version: '3.7'
         MacOS38:
-          vm_image: 'macOS-10.14'
+          vm_image: 'macOS-10.15'
           py_version: '3.8'
         MacOS39:
-          vm_image: 'macOS-10.14'
+          vm_image: 'macOS-10.15'
           py_version: '3.9'
     pool:
       vmImage: $(vm_image)
