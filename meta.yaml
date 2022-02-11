@@ -55,7 +55,6 @@ build:
   script_env:
     - CC
     - CXX
-    - OSX_VERSION
 
 test:
   imports:

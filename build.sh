@@ -13,9 +13,8 @@ cmake \
   -DPython_EXECUTABLE="$CONDA_PREFIX/bin/python" \
   -DCMAKE_PREFIX_PATH=$CONDA_PREFIX \
   -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX \
-  -DCMAKE_OSX_DEPLOYMENT_TARGET=$OSX_VERSION \
   -DHDF5_ROOT=$CONDA_PREFIX \
-  -DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX$OSX_VERSION.sdk" \
+  -DCMAKE_OSX_SYSROOT="/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk" \
   -DOpenSSL_ROOT=$CONDA_PREFIX \
   -DUSE_SYSTEM_EIGEN=OFF \
   -DENABLE_MANTIDPLOT=OFF \

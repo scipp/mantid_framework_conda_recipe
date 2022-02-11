@@ -45,8 +45,6 @@ jobs:
         value: ${{ parameters.mantid_ver }}
       - name: PYTHON_VERSION
         value: $(py_version)
-      - name: OSX_VERSION
-        value: '10.15'
     steps:
       - checkout: self
         submodules: true
