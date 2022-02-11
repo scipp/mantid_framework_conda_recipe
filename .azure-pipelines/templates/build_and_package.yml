@@ -8,6 +8,9 @@ parameters:
   - name: mantid_ver
     type: string
     default: ""
+  - name: conda_label
+    type: string
+    default: 'test'
 
 jobs:
   - job: 'builder'
@@ -66,7 +69,7 @@ jobs:
         - bash: |
             echo Publishing
             set -ex
-            conda mambabuild --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --label main --python="$PYTHON_VERSION" .
+            conda mambabuild --user scipp --token "$ANACONDA_TOKEN" --channel conda-forge --channel nodefaults --label ${{ parameters.conda_label }} --python="$PYTHON_VERSION" .
           env:
             ANACONDA_TOKEN: $(anaconda_token_secret)
           displayName: 'Conda build and publish'
