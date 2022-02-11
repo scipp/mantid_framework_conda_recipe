@@ -9,6 +9,6 @@ extends:
   template: templates/build_and_package.yml
   parameters:
     publish: true #  publish package to anaconda cloud
-    conda_label: 'main'
     git_rev: "a5dca387c0b88a0d6161ab54e76dfc3c99b2c83d"
     mantid_ver: "6.2.0"
+    conda_label: 'main'
